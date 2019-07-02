@@ -10,6 +10,11 @@ module SessionsHelper
     session[:workspace_name] = mworkspace.workspace_name
   end
 
+  def save(mchannel)
+    session[:channel_id] = mchannel.id
+    session[:channel_name] = mchannel.channel_name
+  end
+
   def channel(channelchat)
     session[:channel_id] = channelchat.id
     session[:channel_name] = channelchat.channel_name

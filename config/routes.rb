@@ -43,6 +43,11 @@ Rails.application.routes.draw do
   post  '/channelcreate',    to: 'sessions#channelcreate'
   get  '/channelcreate',    to: 'sessions#channelcreate'
 
+  get  '/chchannel',    to: 'channel#chchannel'
+  post  '/chchannel',    to: 'channel#chchannel'
+  get  '/createchannel',    to: 'channel#createchannel'
+  post  '/createchannel',    to: 'channel#createchannel'
+
   #chat
   #cna
   get '/channelchat',    to: 'users#channel_chat'
@@ -58,6 +63,7 @@ Rails.application.routes.draw do
 
   resources :workspaces
   resources :m_users
+  resources :m_channels
   resources :account_activations, only: [:edit]
   resources :t_channel_msg,          only: [:msgsend, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
