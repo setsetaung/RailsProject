@@ -1,0 +1,43 @@
+<div class="container-fluid bd">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 hleft">
+            <%= render 'listed/list_info' %>
+        </div>
+        <div class="col-sm-10 col-md-10 hright">
+
+            <div class="container-fluid member">
+                <header class="container-fluid row">
+                <div class="col-md-10">
+                    <h3>Manage Member</h3>
+                </div>
+                <div class="col-md-2 mstar">
+                    <%= link_to "@", '#', class: "mlink" %>
+                    <%= link_to "",'#', :class => "fa fa-star btnstar" %>
+                </div>
+                </header>
+                <div class="dframe">
+                    <%= label :name, "Name" %><br><br><br><br>
+                    <div class="row">
+                        <div class="col-sm-4">
+                        <ul>
+                        <% @muser.each do |muser|%>   
+                            <li>
+                                <%= muser.user_name %>   
+                                        <% if @admin.map(&:user_id).include? muser.id %>            
+                                        &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp<%=  "Admin " %>
+                                        <% else %>
+                                        &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp<%= link_to "User",admin_url(:user_id => muser.id),method: :patch %> 
+                                <% end %> 
+                            </li>
+                        <% end %>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

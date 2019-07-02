@@ -1,0 +1,16 @@
+<% provide(:title, 'New WorkSpace') %>
+
+<div class="row new_workspace">
+  <div class="col-md-6 col-md-offset-3">
+  <h1>New WorkSpace</h1>
+  <br><br>
+  <%= form_for(:mworkspace, url: channelcreate_path) do |f| %>
+      <%= f.label :name, "New WorkSpace:" %>
+      <%= f.text_field :name, class: "form-control" %>     
+      <%= f.submit "Next", class:"btn btn-primary btn-lg btn-block"  %>
+      <% end %>
+  </div>
+  </div>
+  
+  
+  

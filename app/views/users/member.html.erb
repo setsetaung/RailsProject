@@ -1,0 +1,16 @@
+<% provide(:title, "Search Your WorkSpace") %>
+
+<div class="row mpage">
+<h1>Join the Slack WorkSpace <span>Workspace Name　</span></h1>
+<br><br>
+  <div class="col-md-6 col-md-offset-3">
+  <%= form_for(:workspace, url: "#") do |f| %>
+      <%= f.label :name, "Full Name:" %>
+      <%= f.text_field :name, class: "form-control" %>    
+      <%= f.label :password, "Password(required):" %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.submit "Join", class:"btn btn-primary btn-lg btn-block" %>
+      <% end %>
+  </div>
+  </div>

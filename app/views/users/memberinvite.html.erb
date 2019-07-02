@@ -1,0 +1,44 @@
+<% provide(:title, 'MemberInvite') %>
+
+<div class="container memberinvite">
+<div>
+  <h1>Invite Member to <b>ChannelName</b></h1>
+  <br><br>
+</div>
+<div class="formgp">
+<%= form_for(:user,url:'#') do |f| %>
+
+<div class="emailform">
+<div class="col">
+  <%= f.label :EmailAddress,"Email Address:" %>
+  <br>
+  <%= f.email_field :email,value:"name@example.com", class: "form-control" %>
+</div>
+<br>
+<br>
+<div class="col">
+  <%= f.label :EmailAddress,"Email Address:" %>
+  <br>
+  <%= f.email_field :email,value:"name@example.com", class: "form-control" %>
+</div>
+<br>
+<br>
+<div class="col">
+  <%= f.label :EmailAddress,"Email Address:" %>
+  <br>
+  <%= f.email_field :email,value:"name@example.com", class: "form-control" %>
+</div>
+<br>
+<br>
+<p><%= link_to "Send Invitations", '#', class: "btn btn-lg btn-primary" %></p>
+</div>
+</div>
+  </div>
+  
+<% end %>  
+
+</div>
+
+
+
+

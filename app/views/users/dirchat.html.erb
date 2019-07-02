@@ -1,0 +1,62 @@
+<div class="container-fluid bd">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 hleft">
+            <%= render 'listed/list_info' %>
+        </div>
+        <div class="col-sm-10 col-md-10 hright">
+            <div class="container-fluid member">
+                <header class="container-fluid row">
+                    <div class="col-md-10">
+                        <h3><%= session[:diruser_name] %></h3>
+                    </div>
+                    <div class="col-md-2 mstar">
+                        <%= link_to "@", '#', class: "mlink" %>
+                        <%= link_to "",'#', :class => "fa fa-star btnstar" %>
+                    </div>
+                </header>
+
+            <div>
+            <br>
+                <% @dir_msg_read.each do |dirmsgread|%>
+                <%= dirmsgread.s %>
+                <%= dirmsgread.message %>
+                Posted <%= time_ago_in_words(dirmsgread.created_at) %> ago.
+                <br>
+                <% end %>  
+
+                <% @dir_msg_unread.each do |dirmsgunread|%>
+                <%= dirmsgunread.user_name %>
+                <%= dirmsgunread.message %>
+                Posted <%= time_ago_in_words(dirmsgunread.created_at) %> ago.
+                <br>
+                <% end %>
+
+                <% @dir_msg_sent.each do |dirmsgsent|%>
+                    <%= dirmsgsent.user_name %>
+                    <%= dirmsgsent.message %>
+                    Posted <%= time_ago_in_words(dirmsgsent.created_at) %> ago.
+                    <br>
+                    <% end %>
+            </div>
+
+                
+                <div class="footer">
+                    <div class col="col-md-8 col-md-offset-5", style="margin-top:20pm">
+                        <%= form_for(:dirmsg,url:dirmsgsend_path) do |f| %>
+                            <%= f.text_area :msg ,class:"tatag"%>
+                            <%= f.submit "Send",class: "btn btn-lg btn-primary btnsent"%>
+                        <% end %>
+                    </div>
+                    <script type="text/javascript">
+                                $(document).ready(function(){
+                                $("Send").click(function(){
+                                location.reload(true);
+                                });
+                        });
+                    </script>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+

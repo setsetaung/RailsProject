@@ -1,0 +1,36 @@
+<div class="container-fluid bd">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 hleft">
+            <%= render 'listed/list_info' %>
+        </div>
+        <div class="col-sm-10 col-md-10 hright">
+            <div class="container member">
+                <header class="container-fluid row">
+                    <div class="col-md-10">
+                    <h3><%= session[:channel_name] %></h3>
+                    <h5><%= link_to "Channel Member List", memberlist1_path, class: "mlink" %></h5>
+                    </div>
+                    <div class="col-md-2 mstar">
+                        <%= link_to "@", '#', class: "mlink" %>
+                        <%= link_to "",'#', :class => "fa fa-star btnstar" %>
+                    </div>
+                </header>
+                <div class="container-fluid row memberlist1">
+                    <div class="col-sm-4">
+                        <ul>
+                        <li><i class="fa fa-user"></i> <%= @member_list.size %> Members &nbsp &nbsp &nbsp &nbsp &nbsp<%= link_to '',addmember_path, :class=> "fa fa-plus mlink" %></li>
+                            <% @member_list.each do |memberlist|%>
+                                <li>
+                                <%= memberlist.user_name %>&nbsp &nbsp &nbsp &nbsp &nbsp<%= link_to '',remove_url(:user_id => memberlist.userid),method: :delete,data: {confirm: "You sure?"},:class=> "fa fa-minus mlink" %>
+                                </li>
+                                <% end %>
+                        </ul>
+                    </div>
+            
+                </div>   
+            </div>
+
+        </div>
+    </div>
+</div>
+

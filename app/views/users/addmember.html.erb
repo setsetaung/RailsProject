@@ -1,0 +1,49 @@
+<div class="container-fluid bd">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 hleft">
+            <%= render 'listed/list_info' %>
+        </div>
+        <div class="col-sm-10 col-md-10 hright">
+        
+            <div class="container-fluid member">
+                <header class="container-fluid row">
+                    <div class="col-md-10">
+                        <h3><%= @mchannel.first.channel_name %></h3>
+                        <h5><%= link_to "Channel Member List", memberlist1_path, class: "mlink" %></h5>
+                    </div>
+                    <div class="col-md-2 mstar">
+                        <%= link_to "@", '#', class: "mlink" %>
+                        <%= link_to "",'#', :class => "fa fa-star btnstar" %>
+                    </div>
+                </header>
+                <div class="dframe">
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <h4>Add Member from <%= session[:workspace_name]%></h4>
+                        </div>        
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-2">
+                        <ul>
+                        <% @muser.each do |muser|%>
+                            
+                            <li>
+                                <%= muser.user_name %>   
+                                        <% if @exist.map(&:user_id).include? muser.id %>            
+                                        <%= link_to "Already Exist",'#',class: "btn btn-warning disabled btnAdd" %>
+                                
+                                        <% else %>
+                                        <%= link_to 'Add', memberadd_url(:user_id => muser.id) %>
+                                           
+                                        <% end %> 
+                            </li>
+                        <% end %>
+                        </ul>
+                    </div>               
+                </div>           
+            </div>
+        </div>
+    </div>
+</div>
+

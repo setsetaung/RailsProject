@@ -1,0 +1,71 @@
+<div class="container details">
+    <div class="dropdown btnDrop">
+        <div class="dropdown-toggle wlink" data-toggle="dropdown">
+            <div class="row">
+                <div class="col-md-10"><span class="wname">
+                    <%= session[:workspace_name] %>
+                    <br>
+                    <%= session[:muser_name] %>
+                </span></div>
+                <div class="col-md-2"> <b class="caret car"></b></div>
+            </div>
+        </div>
+        <ul class="dropdown-menu dropdown-menu-right">
+              <li><%= link_to "Manage Member", managemember_path, class: "alink" %></li>
+              <li><%= link_to "SignIn other workspace", '#', class: "alink" %></li>
+              <li>
+                <%= link_to "Sign Out", '#', class: "alink" %>
+              </li>
+        </ul>
+    </div>
+    
+    <div class="thread_unread">
+        <div>
+            <%= link_to "Thread", '#', class: "alink" %>
+        </div>
+
+        <div>
+            <%= link_to "Unread", '#', class: "alink" %>
+        </div>
+    </div>
+    
+
+    <div class="channel">
+        <h3>Channel<%= link_to "", channelcreate_path, class: "fa fa-plus alink blink" %></h3>
+        <ul>
+        <% @mchannel.each do |mchannel|%>
+            <li>
+            <%=link_to mchannel.channel_name,channelchat_url(:channel_id => mchannel.id), method: :post ,class: "alink" %>
+            <% @channel_count.each do |count|%>
+                <% if mchannel.id==count.channel_id%>               
+               &nbsp &nbsp &nbsp &nbsp &nbsp<%= count.count%>
+                <% end %>
+                <% end %>
+            </li>
+        <% end %>
+        </ul>
+    </div>
+
+    <div class="memberlist2">
+        <h3>Member List</h3>
+        <ul>
+          
+        <% @muser.each do |muser|%>
+            <li>
+            <%= link_to muser.user_name, dirchat_url(:id => muser.id), class: "alink"   %>         
+                <% @dir_count.each do |count|%>
+                    <% if muser.user_name==count.user_name%>               
+                    &nbsp &nbsp &nbsp &nbsp &nbsp<%= count.count%>
+                <% end %>
+                    
+            <% end %>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="dmemberinvite">
+        <h3>Member Invite<%= link_to "", memberinvite_path, class: "fa fa-plus alink blink" %></h3>
+    </div>
+
+</div>

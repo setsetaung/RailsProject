@@ -1,0 +1,22 @@
+
+<% provide(:title, 'Sign up') %>
+
+
+<div class="row signup">
+  <div class="col-md-6 col-md-offset-3">
+  <h1>Sign Up</h1><br><br>
+    <%= form_for(:user,url:'#') do |f| %>
+      <%= f.label :UserName,"UserName:" %>
+      <%= f.text_field :name, class: "form-control" %>
+      <%= f.label :Email,"Email:" %>
+      <%= f.email_field :email, class: "form-control" %>
+      <%= f.label :Password ,"Password:"%>
+      <%= f.password_field :password, class: "form-control" %>
+      <%= f.label :ComfirmPassword ,"Comfirm Password:"%>
+      <%= f.password_field :comfirmpassword, class: "form-control" %> 
+
+      <%= f.submit "SignUp", class: "btn btn-primary form-control" %>
+    <% end %>
+  </div>
+
+</div>

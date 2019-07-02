@@ -1,0 +1,49 @@
+<div class="container-fluid bd">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 hleft">
+            <%= render 'listed/list_info' %>
+        </div>
+        <div class="col-sm-10 col-md-10 hright">
+            <div class="container-fluid member">
+                <header class="container-fluid row">
+                    <div class="col-md-10">
+                    <h3><%= session[:channel_name] %></h3>
+                    <h5><%= link_to "Channel Member List", memberlist1_path, class: "mlink" %></h5>
+                    </div>
+                    <div class="col-md-2 mstar">
+                        <%= link_to "@", '#', class: "mlink" %>
+                        <%= link_to "",'#', :class => "fa fa-star btnstar" %>
+                    </div>
+                </header>
+
+            <div>
+                <br>
+                    <% @channel_msg_read.each do |channelmsgread|%>
+                    <%= channelmsgread.user_name %>
+                    <%= channelmsgread.channel_msg %>
+                    Posted <%= time_ago_in_words(channelmsgread.created_at) %> ago.
+                    <br>
+                <% end %>
+               
+                <% @channel_msg_unread.each do |channelmsgunread|%>
+                    <%= channelmsgunread.user_name %>
+                    <%= channelmsgunread.channel_msg %>
+                    <br>
+                <% end %>
+                
+            </div>
+
+                
+                <div class="footer">
+                    <div class col="col-md-8 col-md-offset-5", style="margin-top:20pm">
+                        <%= form_for(:tchamsg,url:msgsend_path) do |f| %>
+                            <%= f.text_area :msg ,class:"tatag"%>
+                            <%= f.submit "Send",class: "btn btn-lg btn-primary btnsent"%>
+                        <% end %>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+

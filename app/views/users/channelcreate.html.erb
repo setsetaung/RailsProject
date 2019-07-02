@@ -1,0 +1,28 @@
+<% provide(:title, 'New WorkSpace') %>
+
+<div class="channel_create">
+  
+  <div class="row new_channel">
+    <div class="col-md-5 col-md-offset-4">
+      <h1>New Channel</h1>
+      <br><br>
+      <%= form_for(:workspace, url: home_path) do |f| %>
+          <%= f.label :name, "Channel Name:" %>
+          <%= f.text_field :name, class: "form-control" %>  
+
+          <div class="row">
+            <div class="col-md-5 text-center">
+              <%= f.radio_button :status, "Public", :checked => true %>
+              <%= f.label :status, "Public" %>
+            </div>
+            <div class="col-md-5 text-center">
+              <%= f.radio_button :status, "Private"%>
+              <%= f.label :status, "Private" %>
+            </div>
+          </div>
+          <%= f.submit "Create", class:"btn btn-primary btn-lg btn-block"  %>
+        <% end %>
+      </div>
+    </div>
+</div>
+  
